@@ -80,17 +80,32 @@ En una hoja de papel dibuje un gráfico hipotetico basado en la figura 4 del art
 <center>![](hola.png)</center>
 
 
-
-
 # **[6 PUNTOS] Regresiones
 
-En esta parte debe aplicar las regresiones lineal, linearizada y generalizada sobre la presencia de ácaros en musgos. Una de las especies analizadas es *Galumma sp.* cuya abundancia presencia y proporción es posiblemente afectada por las siguiente cinco variables ambientales como densidad de sustrato, el tipo de sustrato, el contenido de agua, si se tiene o no arbustos en la cercanía y la topografía del suelo. Utilice la data ```mites.csv``` y responda los siguientes items. 
+En esta parte debe aplicar las regresiones lineal, linearizada y generalizada sobre la presencia de ácaros en musgos. Una de las especies analizadas es *Galumma sp.* cuya abundancia presencia y proporción es posiblemente afectada por las siguiente cinco variables ambientales como densidad de sustrato, el tipo de sustrato, el contenido de agua, si se tiene o no arbustos en la cercanía y la topografía del suelo. Utilice la data ```mites.csv``` y responda los siguientes items.
 
-- ¿Cuál es el efecto de las variables ambientales en la i) abundancia de ii) abundancia y iii) proporción de la especie *Galumma sp.*?
+```{r} ```
+data <- read.csv("mites.csv")
+modelo_abundancia <- lm(abundancia ~ densidad_sustrato + tipo_sustrato + contenido_agua + arbustos_cercania + topografia_suelo, data = data)
+summary(modelo_abundancia)
+modelo_ocurrencia <- glm(ocurrencia ~ densidad_sustrato + tipo_sustrato + contenido_agua + arbustos_cercania + topografia_suelo, data = data, family = binomial)
+summary(modelo_ocurrencia)
+modelo_ocurrencia <- glm(ocurrencia ~ densidad_sustrato + tipo_sustrato + contenido_agua + arbustos_cercania + topografia_suelo, data = data, family = poisson)
+summary(modelo_ocurrencia)
+```{r} ```
+
+
+
+
+
+- ¿Cuál es el efecto de las variables ambientales en la i) abundancia de ii) ocurrencia y iii) proporción de la especie *Galumma sp.*?
+
 
 Para responder esta pregunta debe generar las hipótesis y probar las hipótesis (código y explicación), asimismo visualizar con etiquetas adecuadas. Considere realizar lo siguiente:
 
 - Realizar un análisis exploratorio.
+
+Otro cambio
 
 - Realizar regresiones lineales de cada variable de respuesta y variables efectoras, univariable o multivariable. Verifique los supuestos de la regresión. 
 

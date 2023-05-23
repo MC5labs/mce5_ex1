@@ -2957,16 +2957,29 @@ ambientales como densidad de sustrato, el tipo de sustrato, el contenido
 de agua, si se tiene o no arbustos en la cercanía y la topografía del
 suelo. Utilice la data <code>mites.csv</code> y responda los siguientes
 items.</p>
+<p><code>{r}</code> data &lt;- read.csv(“mites.csv”) modelo_abundancia
+&lt;- lm(abundancia ~ densidad_sustrato + tipo_sustrato + contenido_agua
++ arbustos_cercania + topografia_suelo, data = data)
+summary(modelo_abundancia) modelo_ocurrencia &lt;- glm(ocurrencia ~
+densidad_sustrato + tipo_sustrato + contenido_agua + arbustos_cercania +
+topografia_suelo, data = data, family = binomial)
+summary(modelo_ocurrencia) modelo_ocurrencia &lt;- glm(ocurrencia ~
+densidad_sustrato + tipo_sustrato + contenido_agua + arbustos_cercania +
+topografia_suelo, data = data, family = poisson)
+summary(modelo_ocurrencia) <code>{r}</code></p>
 <ul>
 <li>¿Cuál es el efecto de las variables ambientales en la i) abundancia
-de ii) abundancia y iii) proporción de la especie <em>Galumma
+de ii) ocurrencia y iii) proporción de la especie <em>Galumma
 sp.</em>?</li>
 </ul>
 <p>Para responder esta pregunta debe generar las hipótesis y probar las
 hipótesis (código y explicación), asimismo visualizar con etiquetas
 adecuadas. Considere realizar lo siguiente:</p>
 <ul>
-<li><p>Realizar un análisis exploratorio.</p></li>
+<li>Realizar un análisis exploratorio.</li>
+</ul>
+<p>Otro cambio</p>
+<ul>
 <li><p>Realizar regresiones lineales de cada variable de respuesta y
 variables efectoras, univariable o multivariable. Verifique los
 supuestos de la regresión.</p></li>
